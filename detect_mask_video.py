@@ -124,6 +124,7 @@ while True:
 		# the bounding box and text
 		label = "Mask" if mask > withoutMask else "No Mask"
 		color = (0, 255, 0) if label == "Mask" else (0, 0, 255)
+                label2 = 'UEIS'
 
 		# include the probability in the label
 		label = "{}: {:.2f}%".format(label, max(mask, withoutMask) * 100)
@@ -132,6 +133,9 @@ while True:
 		# frame
 		cv2.putText(frame, label, (startX, startY - 10),
 			cv2.FONT_HERSHEY_SIMPLEX, 0.45, color, 2)
+		cv2.putText(frame, label2, (0,0),
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.45, (0, 200, 0), 2)
+		
 		cv2.rectangle(frame, (startX, startY), (endX, endY), color, 2)
 
 	# show the output frame
